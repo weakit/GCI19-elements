@@ -126,6 +126,7 @@ def gui():
         img.thumbnail((600, 600), Image.LANCZOS)
         img_root = tk.Tk()
         img_root.title("Image Hint")
+        img_root.resizable(False, False)
         image = ImageTk.PhotoImage(img, master=img_root)
         label = tk.Label(img_root, image=image)
         label.image = image
@@ -193,10 +194,11 @@ def gui():
 
     menu = tk.Menu(root)
     menu.add_command(label="New Element", command=reset)
+    menu.add_command(label="Quit", command=delete)
 
     root.config(menu=menu)
     root.title("Elements")
-    root.geometry("300x220")
+    root.geometry("300x245")
     root.resizable(False, False)
     root.protocol("WM_DELETE_WINDOW", delete)
 
@@ -208,12 +210,14 @@ def gui():
                        fg='white', bg='gray50', activeforeground='white', activebackground='gray50')
     entry = tk.Entry(root, justify='center', textvariable=inp,)
     button = tk.Button(root, text='check', command=check, justify='center', padx=5)
+    give_up = tk.Button(root, text='give up', command=lose, justify='center', padx=5)
 
     lb1.place(relx=0.5, y=25, anchor='center')
     atomic.place(relx=0.5, y=79, anchor='center')
     entry.place(relwidth=0.6, relx=0.5, y=135, anchor=tk.CENTER)
     lb2.place(relx=0.5, y=155, anchor=tk.CENTER)
     button.place(relx=0.5, y=185, anchor='center')
+    give_up.place(relx=0.5, y=220, anchor='center')
 
     root.mainloop()
 
